@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: '5%',
         top: '5%',
-        color: 'red'
+        color: '#fff',
     }
 });

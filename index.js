@@ -11,4 +11,4 @@ import voucherDetails from './components/VoucherDetails';
 import homeScreen from './components/Homescreen';
 import voucherList from './components/VoucherList';
 
-AppRegistry.registerComponent(appName, () => voucherList);
+AppRegistry.registerComponent(appName, () => homeScreen);
