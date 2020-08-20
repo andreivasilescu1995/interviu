@@ -1,7 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import { primaryColor } from './Login';
-
+import { TouchableOpacity, Text, View } from 'react-native';
+import { primaryColor } from './color';
 
 export default class Category extends React.Component {
     constructor(props) {
@@ -48,21 +47,21 @@ export default class Category extends React.Component {
         )
     }
 
-    styles = StyleSheet.create({
-        container: {
-            paddingRight: '1.5%',
-            paddingLeft: '1.5%',
-            paddingBottom: '2%',
-        },
-        text: {
-            textAlign: 'center',
-            paddingTop: '1.3%',
-            paddingBottom: '1.3%',
-            paddingLeft: '6%',
-            paddingRight: '6%',
-            color: primaryColor,
-            fontSize: 14,
-        }
-    })
+    // styles = StyleSheet.create({
+    //     container: {
+    //         paddingRight: '1.5%',
+    //         paddingLeft: '1.5%',
+    //         paddingBottom: '2%',
+    //     },
+    //     text: {
+    //         textAlign: 'center',
+    //         paddingTop: '1.3%',
+    //         paddingBottom: '1.3%',
+    //         paddingLeft: '6%',
+    //         paddingRight: '6%',
+    //         color: primaryColor,
+    //         fontSize: 14,
+    //     }
+    // })
 };
 

@@ -2,14 +2,14 @@ import React from 'react'
 import {
     StyleSheet,
     View,
-    Text,
-    ScrollView,
     FlatList,
 } from 'react-native';
+
 import { Dimensions } from 'react-native';
 
+import { primaryColor } from './color';
+import Category from './category';
 import { Header } from './Homescreen';
-import { primaryColor } from './Login';
 import { ImageOffer } from './img';
 
 const d = Dimensions.get('window')
@@ -20,16 +20,28 @@ function ImageListItem({ item }) {
             imageSource={item.imageSource}
             imageStyle={styles.images}
             text={item.text}
-            textStyle={stylesList.downLeft}
+            textStyle={stylesImageList.downLeft}
             text1={item.text1}
-            textStyle1={stylesList.downLeft1}
+            textStyle1={stylesImageList.downLeft1}
             text2={item.text2}
-            textStyle2={stylesList.upRight}
+            textStyle2={stylesImageList.upRight}
         />
     );
 };
 
-const images = [
+function CategoryListItem({ item }) {
+    return (
+        <Category
+            styleContainer={stylesCategoryList.container}
+            iconSource={item.iconSource}
+            text={item.text}
+            styleIcon={stylesCategoryList.icon}
+            styleText={stylesCategoryList.text}
+        />
+    );
+}
+
+const imagesList = [
     { id: '1', text: 'Mega Week', text1: '1 pizza kopen = 3 meenemen', text2: 'Pizza Hut', imageSource: require('../assets/pizza-PVPBJMQ.png') },
     { id: '2', text: 'Coffe brake', text1: '1 cofee to go for you', text2: 'Company name', imageSource: require('../assets/Image1.png') },
     { id: '3', text: 'Srimps and seafood', text1: '15% discount', text2: 'Company name', imageSource: require('../assets/Image3.png') },
@@ -37,12 +49,27 @@ const images = [
     { id: '5', imageSource: require('../assets/Image5.png') },
 ];
 
+const categoryList = [
+    { id: '1', text: 'Food & Drinks', iconSource: require('../assets/Page-1.png') },
+    { id: '2', text: 'Sports', iconSource: require('../assets/basketball.png') },
+    { id: '3', text: 'Leisure', iconSource: require('../assets/bowling.png') },
+    { id: '4', text: 'Internet of things', iconSource: require('../assets/internet-of-things.png') },
+];
+
 export default function voucherList() {
     return (
         <>
             <Header styleContainer={styles.containerHeader} styleButton={styles.locationButton} />
+            <View style={{ marginLeft: '3%', marginTop: '5%', marginBottom: '5%' }}>
+                <FlatList
+                    data={categoryList}
+                    horizontal={true}
+                    renderItem={({ item }) => <CategoryListItem item={item} />}
+                    keyExtractor={item => item.id}
+                />
+            </View>
             <FlatList
-                data={images}
+                data={imagesList}
                 renderItem={({ item }) => <ImageListItem item={item} />}
                 keyExtractor={item => item.id}
             />
@@ -53,7 +80,6 @@ export default function voucherList() {
 const styles = StyleSheet.create({
     containerHeader: {
         flexDirection: 'row',
-        marginTop: '4%',
         marginLeft: '3%',
         marginRight: '3%',
         justifyContent: 'space-between',
@@ -78,7 +104,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const stylesList = StyleSheet.create({
+const stylesImageList = StyleSheet.create({
     downLeft: {
         marginLeft: '4%',
         marginBottom: '1%',
@@ -95,4 +121,26 @@ const stylesList = StyleSheet.create({
         marginTop: '4%',
         marginRight: '2%',
     },
+});
+
+const stylesCategoryList = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 15,
+        borderColor: primaryColor,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    icon: {
+        marginLeft: 5,
+    },
+    text: {
+        color: primaryColor,
+        fontSize: 14,
+        paddingLeft: 10
+    }
 });

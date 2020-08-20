@@ -10,9 +10,7 @@ import {
 } from 'react-native';
 
 import Logo from './logo';
-
-export const primaryColor = '#0b5f63';
-export const secondaryColor = '#ff7e21';
+import { primaryColor, secondaryColor } from './color';
 
 export default function login(props) {
     const [switchEnabled, setswitchEnabled] = useState(true);

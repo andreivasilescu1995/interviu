@@ -10,7 +10,7 @@ import {
 
 import Logo from './logo';
 import { ImageOffer } from './img';
-import { primaryColor } from './Login';
+import { primaryColor } from './color';
 import { Categories } from './VoucherDetails';
 
 export const Header = (props) => {
