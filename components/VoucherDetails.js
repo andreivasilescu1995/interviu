@@ -8,7 +8,7 @@ import {
 
 import Logo from './logo';
 import Category from './touchableComp';
-import { secondaryColor, primaryColor } from './color';
+import { primaryColor } from './color';
 
 export default function voucherDetails(props) {
     return (

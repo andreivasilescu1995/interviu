@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
     downLeft1: {
         position: 'absolute',
-        bottom: '6%',
+        bottom: '4%',
         left: '4%',
         color: '#fff',
     },

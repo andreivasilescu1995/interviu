@@ -46,7 +46,7 @@ const imagesList = [
     { id: '2', text: 'Coffe brake', text1: '1 cofee to go for you', text2: 'Company name', imageSource: require('../assets/Image1.png') },
     { id: '3', text: 'Srimps and seafood', text1: '15% discount', text2: 'Company name', imageSource: require('../assets/Image3.png') },
     { id: '4', text: 'T-Bone stake', text1: 'a free drink', text2: 'Pizza Hut', imageSource: require('../assets/Image4.png') },
-    { id: '5', imageSource: require('../assets/Image5.png') },
+    { id: '5', text2: 'Pizza Hut', imageSource: require('../assets/Image5.png') },
 ];
 
 const categoryList = [
@@ -60,7 +60,7 @@ export default function voucherList() {
     return (
         <>
             <Header styleContainer={styles.containerHeader} styleButton={styles.locationButton} />
-            <View style={{ marginLeft: '3%', marginTop: '5%', marginBottom: '5%' }}>
+            <View style={{ marginLeft: '3%', marginTop: '5%', marginBottom: '4%' }}>
                 <FlatList
                     data={categoryList}
                     horizontal={true}
@@ -100,7 +100,9 @@ const styles = StyleSheet.create({
         height: d.height * 0.29,
         borderRadius: 8,
         alignSelf: 'center',
-        margin: '2%'
+        marginLeft: '2%',
+        marginRight: '2%',
+        marginBottom: '2%',
     },
 });
 
@@ -134,6 +136,8 @@ const stylesCategoryList = StyleSheet.create({
         borderColor: primaryColor,
         paddingLeft: 10,
         paddingRight: 10,
+        paddingTop: 3,
+        paddingBottom: 3,
     },
     icon: {
         marginLeft: 5,

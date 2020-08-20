@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
-import { primaryColor } from './color';
+import { primaryColor, secondaryColor } from './color';
 
 export default class Category extends React.Component {
     constructor(props) {
@@ -24,8 +24,8 @@ export default class Category extends React.Component {
             :
             this.setState({
                 pressed: true,
-                borderColor: '#d15f00',
-                backgroundColor: '#d15f00',
+                borderColor: secondaryColor,
+                backgroundColor: secondaryColor,
                 textColor: '#fff'
             })
     }

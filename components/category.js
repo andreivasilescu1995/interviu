@@ -14,22 +14,25 @@ export default class Category extends React.Component {
         this.state = {
             contColor: '#fff',
             textColor: primaryColor,
+            borderColor: primaryColor,
             pressed: false
         }
     }
 
     changeColor() {
-        this.pressed ?
+        this.state.pressed ?
             this.setState({
-                contColor: primaryColor,
-                textColor: primaryColor,
                 pressed: false,
+                borderColor: primaryColor,
+                contColor: '#fff',
+                textColor: primaryColor
             })
             :
             this.setState({
-                contColor: secondaryColor,
-                textColor: '#fff',
                 pressed: true,
+                borderColor: secondaryColor,
+                contColor: secondaryColor,
+                textColor: '#fff'
             })
     }
 
@@ -38,7 +41,7 @@ export default class Category extends React.Component {
             <View style={{ flexDirection: 'row', paddingRight: 8 }}>
                 <TouchableOpacity
                     onPress={() => { this.changeColor() }}
-                    style={[this.props.styleContainer, {backgroundColor: this.state.contColor}]}>
+                    style={[this.props.styleContainer, {backgroundColor: this.state.contColor, borderColor: this.state.borderColor}]}>
                     <Image
                         source={this.props.iconSource}
                         style={this.props.styleIcon}
