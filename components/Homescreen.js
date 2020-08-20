@@ -6,13 +6,15 @@ import {
     Image,
     TouchableOpacity,
     ScrollView,
-    FlatList,
 } from 'react-native';
+import { Dimensions } from 'react-native';
 
 import Logo from './logo';
 import { ImageOffer } from './img';
 import { primaryColor } from './color';
 import { Categories } from './VoucherDetails';
+
+const d = Dimensions.get('window');
 
 export const Header = (props) => {
     return (
@@ -35,50 +37,47 @@ export const Header = (props) => {
 export default function homeScreen() {
     return (
         <>
-            <ScrollView style={{ flex: 1 }}>
-
+            <ScrollView>
                 <Header styleContainer={styles.containerHeader} styleButton={styles.locationButton} />
-
                 <View style={styles.containerOffers}>
-                    <View style={{ alignItems: 'center' }}>
-                        <Image style={[styles.images, { aspectRatio: 2, }]} source={require('../assets/MaskGroup15.png')} />
-                        <View>
-                            <ImageOffer
-                                imageSource={require('../assets/pizza-PVPBJMQ-1.png')}
-                                imageStyle={{ aspectRatio: 2.2, borderRadius: 15 }}
-                                text={'Pizza time in Leuven'}
-                                textStyle={[styles.urlTextTitle, { fontSize: 22, fontWeight: 'bold', }]}
-                                text1={'1 pizza kopen = 3 meenemen'}
-                            />
-                        </View>
+                    <ImageOffer
+                        imageSource={require('../assets/MaskGroup15.png')}
+                        imageStyle={styles.images}
+                    />
+                    <View>
+                        <ImageOffer
+                            imageSource={require('../assets/pizza-PVPBJMQ-1.png')}
+                            imageStyle={styles.images}
+                            text={'Pizza time in Leuven'}
+                            textStyle={stylesImageList.downLeft}
+                            text1={'1 pizza kopen = 3 meenemen'}
+                            textStyle1={stylesImageList.downLeft1}
+                        />
                     </View>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', margin: '3%' }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                         <View>
                             <ImageOffer
-                                imageStyle={[styles.images], { aspectRatio: 1.6 }}
+                                imageStyle={[styles.smallImages, {}]}
                                 imageSource={require('../assets/desert-PPAC3KE.png')}
                                 text={'Sweets week'}
-                                textStyle={{ fontSize: 18, fontWeight: 'bold', marginBottom: '1%' }}
+                                textStyle={stylesImageList.downLeftSmaller}
                             />
                         </View>
                         <View>
                             <ImageOffer
-                                imageStyle={[styles.images], { aspectRatio: 1.6 }}
+                                imageStyle={styles.smallImages}
                                 imageSource={require('../assets/halloween-party-ballooons-and-decorations-HH9G5UC.png')}
                                 text={'Halloween week'}
-                                textStyle={{ fontSize: 18, fontWeight: 'bold', marginBottom: '1%', }}
+                                textStyle={stylesImageList.downLeftSmaller}
                             />
                         </View>
                     </View>
-
                 </View>
 
-                <View style={{ marginLeft: '3%', marginRight: '3%' }}>
-                    <TouchableOpacity style={styles.vouchersButton}>
-                        <Text>See all Vouchers</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={styles.vouchersButton}>
+                    <Text>See all Vouchers</Text>
+                </TouchableOpacity>
 
                 <View style={{ marginBottom: '3%' }}>
                     <Text style={styles.navigateText}>Navigate the city</Text>
@@ -98,7 +97,6 @@ export default function homeScreen() {
 
 const styles = StyleSheet.create({
     containerHeader: {
-        flex: 0.5,
         flexDirection: 'row',
         marginTop: '4%',
         marginLeft: '3%',
@@ -115,16 +113,20 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     containerOffers: {
-        flex: 3,
-        alignContent: 'center',
-        // justifyContent: 'center',
-        marginTop: '2%',
+        flex: 1,
+        marginTop: '5%',
     },
     images: {
+        resizeMode: 'contain',
+        width: d.width * 0.95,
+        height: d.height * 0.29,
+        alignSelf: 'center',
+    },
+    smallImages: {
         flex: 1,
         resizeMode: 'contain',
-        marginTop: '3%',
-        marginBottom: '3%',
+        width: d.width * 0.45,
+        height: d.height * 0.17,
     },
     vouchersButton: {
         flex: 1,
@@ -133,11 +135,14 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderWidth: 1.5,
         justifyContent: 'center',
-        padding: '3%',
+        padding: '2%',
+        marginLeft: '3%',
+        marginRight: '3%',
+        marginTop: '3%'
     },
     navigateText: {
         fontWeight: 'bold',
-        fontSize: 17,
+        fontSize: 18,
         marginTop: '3%',
         marginBottom: '2%',
         marginLeft: '3%',
@@ -163,7 +168,7 @@ const styles = StyleSheet.create({
 const stylesCategories = StyleSheet.create({
     container: {
         paddingRight: '2%',
-        paddingLeft: '2%',
+        paddingLeft: '3%',
         paddingBottom: '2%',
     },
     text: {
@@ -176,3 +181,29 @@ const stylesCategories = StyleSheet.create({
         fontSize: 14,
     }
 });
+
+const stylesImageList = StyleSheet.create({
+    downLeft: {
+        marginLeft: '1%',
+        marginBottom: '2%',
+        fontSize: 21,
+        fontWeight: 'bold',
+    },
+    downLeft1: {
+        marginLeft: '1%',
+        marginBottom: '3%',
+    },
+    upRight: {
+        fontSize: 21,
+        fontWeight: 'bold',
+        marginTop: '4%',
+        marginRight: '2%',
+    },
+    downLeftSmaller: {
+        marginLeft: '8%',
+        marginBottom: '2%',
+        fontSize: 17,
+        fontWeight: 'bold',
+    },
+});
+
