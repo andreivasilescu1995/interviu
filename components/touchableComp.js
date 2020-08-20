@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import { primaryColor } from './login';
+import { primaryColor } from './Login';
 
 
 export default class Category extends React.Component {

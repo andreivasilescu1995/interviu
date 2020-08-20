@@ -2,17 +2,13 @@ import React from 'react'
 import {
     StyleSheet,
     View,
-    Image,
     Text,
-    Switch,
-    TextInput,
     TouchableOpacity,
-    ScrollView,
 } from 'react-native';
 
 import Logo from './logo';
 import Category from './touchableComp';
-import { secondaryColor, primaryColor } from './login';
+import { secondaryColor, primaryColor } from './Login';
 
 export default function voucherDetails(props) {
     return (
@@ -43,7 +39,7 @@ export const Categories = (props) => {
     return (
         <View
             style={props.style}>
-            <View style={[styles.row, { width: '106%' }]}>
+            <View style={[styles.row]}>
                 <Category styleContainer={props.styleContainer} styleText={props.styleText} text={'Food & Drinks'} />
                 <Category styleContainer={props.styleContainer} styleText={props.styleText} text={'Sports'} />
                 <Category styleContainer={props.styleContainer} styleText={props.styleText} text={'Leisure'} />
@@ -73,7 +69,6 @@ export const Categories = (props) => {
 const styles = StyleSheet.create({
     containerHeader: {
         flex: 0.5,
-        // backgroundColor: 'red'
     },
     logo: {
         alignSelf: 'center',
@@ -128,8 +123,8 @@ const stylesCategories = StyleSheet.create({
         textAlign: 'center',
         paddingTop: '1.3%',
         paddingBottom: '1.3%',
-        paddingLeft: '6%',
-        paddingRight: '6%',
+        paddingLeft: '6.5%',
+        paddingRight: '6.5%',
         color: primaryColor,
         fontSize: 14,
     }

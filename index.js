@@ -1,11 +1,14 @@
 /**
  * @format
  */
+import React, { useState } from 'react'
 
 import {AppRegistry} from 'react-native';
-import login from './components/login';
-import voucherDetails from './components/voucherDetails';
-import homeScreen from './components/homescreen';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => homeScreen);
+import login from './components/Login';
+import voucherDetails from './components/VoucherDetails';
+import homeScreen from './components/Homescreen';
+import voucherList from './components/VoucherList';
+
+AppRegistry.registerComponent(appName, () => voucherList);

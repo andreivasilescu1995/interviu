@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
     StyleSheet,
     View,
     Text,
     Image,
-    Switch,
-    TextInput,
     TouchableOpacity,
     ScrollView,
 } from 'react-native';
 
 import Logo from './logo';
-import { primaryColor } from './login';
-import { Categories } from './voucherDetails';
+import { ImageOffer } from './img';
+import { primaryColor } from './Login';
+import { Categories } from './VoucherDetails';
 
 export const Header = (props) => {
     return (
@@ -20,14 +19,16 @@ export const Header = (props) => {
             <Logo />
             <TouchableOpacity
                 style={props.styleButton}>
-                <Image style={{ marginRight: '3%' }} source={require('../assets/Path3390.png')} />
-                <Text style={{ color: '#fff' }}>My city: </Text>
-                <Text style={{ color: '#fff', fontWeight: 'bold' }}>Leuven</Text>
-                <Image source={require('../assets/Group152.png')} />
+                <View style={{flexDirection: 'row', marginLeft: '8%'}}>
+                    <Image style={{marginTop: '4%', marginRight: '5%'}}source={require('../assets/Path3390.png')} />
+                    <Text style={{ color: '#fff' }}>My city: </Text>
+                    <Text style={{ color: '#fff', fontWeight: 'bold' }}>Leuven</Text>
+                </View>
+                <Image style={{marginRight: '8%', marginTop: '1%'}}source={require('../assets/Group152.png')} />
             </TouchableOpacity>
             <Image source={require('../assets/wallet.png')} />
         </View>
-    )
+    );
 };
 
 export default function homeScreen() {
@@ -40,29 +41,52 @@ export default function homeScreen() {
                 <View style={styles.containerOffers}>
                     <View style={{ alignItems: 'center' }}>
                         <Image style={[styles.images, { aspectRatio: 2, }]} source={require('../assets/MaskGroup15.png')} />
-                        <Image style={[styles.images, { aspectRatio: 2.2 }]} source={require('../assets/pizza-PVPBJMQ-1.png')} />
+                        <View>
+                            <ImageOffer
+                                imageSource={require('../assets/pizza-PVPBJMQ-1.png')}
+                                imageStyle={{aspectRatio: 2.2, borderRadius: 15}}
+                                text={'Pizza time in Leuven'}
+                                textStyle={[styles.urlTextTitle, { fontSize: 22, fontWeight: 'bold', }]}
+                                text1={'1 pizza kopen = 3 meenemen'}
+                            />
+                        </View>
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginLeft: '1%', marginRight: '1%' }}>
-                        <Image style={[styles.images, { aspectRatio: 1.75 }]} source={require('../assets/desert-PPAC3KE.png')} />
-                        <Image style={[styles.images, { aspectRatio: 1.75 }]} source={require('../assets/halloween-party-ballooons-and-decorations-HH9G5UC.png')} />
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', margin: '3%'}}>
+                        <View>
+                            <ImageOffer
+                                imageStyle={[styles.images], { aspectRatio: 1.6 }}
+                                imageSource={require('../assets/desert-PPAC3KE.png')}
+                                text={'Sweets week'}
+                                textStyle={{ fontSize: 18, fontWeight: 'bold', marginBottom: '1%' }}
+                            />
+                        </View>
+                        <View>
+                            <ImageOffer
+                                imageStyle={[styles.images], { aspectRatio: 1.6 }}
+                                imageSource={require('../assets/halloween-party-ballooons-and-decorations-HH9G5UC.png')}
+                                text={'Halloween week'}
+                                textStyle={{ fontSize: 18, fontWeight: 'bold', marginBottom: '1%', }}
+                            />
+                        </View>
                     </View>
 
                 </View>
 
-                <View style={{ marginTop: '3%', marginLeft: '3%', marginRight: '3%' }}>
+                <View style={{marginLeft: '3%', marginRight: '3%' }}>
                     <TouchableOpacity style={styles.vouchersButton}>
                         <Text>See all Vouchers</Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerCategories}>
+                <View style={{marginBottom: '3%'}}>
                     <Text style={styles.navigateText}>Navigate the city</Text>
-                    <Categories style={styles.containerCategories} styleContainer={stylesCategories.container} styleText={stylesCategories.text} />
+                    <Categories styleContainer={stylesCategories.container} styleText={stylesCategories.text} />
                 </View>
 
                 <View style={styles.containerButton}>
                     <TouchableOpacity style={styles.accountButton}>
-                        <Image style={{marginRight: '5%'}}source={require('../assets/account.png')} />
+                        <Image style={{ marginRight: '5%' }} source={require('../assets/account.png')} />
                         <Text style={{ color: '#fff' }}>My account</Text>
                     </TouchableOpacity>
                 </View>
@@ -84,11 +108,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderColor: primaryColor,
         borderRadius: 15,
-        borderWidth: 1.5,
         backgroundColor: primaryColor,
-        paddingLeft: '3%',
-        paddingRight: '3%',
-        alignItems: 'center',
+        width: '50%',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     containerOffers: {
         flex: 3,
@@ -98,8 +121,8 @@ const styles = StyleSheet.create({
     images: {
         flex: 1,
         resizeMode: 'contain',
-        marginTop: '1%',
-        marginBottom: '1%',
+        marginTop: '3%',
+        marginBottom: '3%',
     },
     vouchersButton: {
         flex: 1,
@@ -113,13 +136,10 @@ const styles = StyleSheet.create({
     navigateText: {
         fontWeight: 'bold',
         fontSize: 17,
-        marginTop: '5%',
+        marginTop: '3%',
         marginBottom: '2%',
         marginLeft: '3%',
         color: '#302f2c',
-    },
-    containerCategories: {
-        flex: 2.5,
     },
     containerButton: {
         flex: 0.5,
@@ -148,9 +168,9 @@ const stylesCategories = StyleSheet.create({
         textAlign: 'center',
         paddingTop: '1%',
         paddingBottom: '1%',
-        paddingLeft: '3%',
-        paddingRight: '3%',
+        paddingLeft: '6%',
+        paddingRight: '6%',
         color: primaryColor,
-        fontSize: 13,
+        fontSize: 14,
     }
 });
