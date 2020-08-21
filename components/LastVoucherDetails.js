@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginLeft: '5%',
         marginRight: '5%',
+        color: '#a1a1a1',
     },
     voucherButton: {
         backgroundColor: primaryColor,
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: '85%',
         height: '10%',
-        marginTop: '10%',
+        marginTop: '15%',
         alignSelf: 'center',
         justifyContent: 'center'
     }

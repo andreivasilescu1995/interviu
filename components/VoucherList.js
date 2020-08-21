@@ -2,6 +2,7 @@ import React from 'react'
 import {
     StyleSheet,
     View,
+    Text,
     FlatList,
 } from 'react-native';
 
@@ -11,6 +12,7 @@ import { primaryColor } from './color';
 import Category from './category';
 import { Header } from './Homescreen';
 import { ImageOffer } from './img';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const d = Dimensions.get('window')
 
@@ -56,11 +58,11 @@ const categoryList = [
     { id: '4', text: 'Internet of things', iconSource: require('../assets/internet-of-things.png') },
 ];
 
-export default function voucherList() {
+export default function voucherList(props) {
     return (
         <>
             <Header styleContainer={styles.containerHeader} styleButton={styles.locationButton} />
-            <View style={{ marginLeft: '3%', marginTop: '5%', marginBottom: '4%' }}>
+            <View style={{ marginLeft: '3%', marginTop: '6%', marginBottom: '4%' }}>
                 <FlatList
                     data={categoryList}
                     horizontal={true}
@@ -73,6 +75,11 @@ export default function voucherList() {
                 renderItem={({ item }) => <ImageListItem item={item} />}
                 keyExtractor={item => item.id}
             />
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <TouchableOpacity style={{ padding: '3%', backgroundColor: primaryColor, borderRadius: 30, }} onPress={() => props.navigation.navigate('VoucherDetails2')}>
+                    <Text style={{ color: '#fff' }}>NEXT SCREEN</Text>
+                </TouchableOpacity>
+            </View>
         </>
     );
 };
@@ -82,6 +89,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginLeft: '3%',
         marginRight: '3%',
+        marginTop: '3%',
         justifyContent: 'space-between',
     },
     locationButton: {
@@ -134,10 +142,10 @@ const stylesCategoryList = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 15,
         borderColor: primaryColor,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 3,
-        paddingBottom: 3,
+        paddingLeft: d.width * 0.03,
+        paddingRight: d.width * 0.03,
+        paddingTop: d.height * 0.003,
+        paddingBottom: d.height * 0.003,
     },
     icon: {
         marginLeft: 5,

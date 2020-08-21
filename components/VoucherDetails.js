@@ -26,7 +26,7 @@ export default function voucherDetails(props) {
 
             <View style={styles.containerBottom}>
                 <TouchableOpacity
-                    onPress={() => console.log('TEST')}
+                    onPress={() => props.navigation.navigate('Homescreen')}
                     style={styles.continueButton}>
                     <Text style={styles.buttonText}>Continue</Text>
                 </TouchableOpacity>

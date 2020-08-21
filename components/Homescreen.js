@@ -34,7 +34,7 @@ export const Header = (props) => {
     );
 };
 
-export default function homeScreen() {
+export default function homeScreen(props) {
     return (
         <>
             <ScrollView>
@@ -58,7 +58,7 @@ export default function homeScreen() {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                         <View>
                             <ImageOffer
-                                imageStyle={[styles.smallImages, {}]}
+                                imageStyle={styles.smallImages}
                                 imageSource={require('../assets/desert-PPAC3KE.png')}
                                 text={'Sweets week'}
                                 textStyle={stylesImageList.downLeftSmaller}
@@ -85,7 +85,7 @@ export default function homeScreen() {
                 </View>
 
                 <View style={styles.containerButton}>
-                    <TouchableOpacity style={styles.accountButton}>
+                    <TouchableOpacity style={styles.accountButton} onPress={() => props.navigation.navigate('VoucherList')}>
                         <Image style={{ marginRight: '5%' }} source={require('../assets/account.png')} />
                         <Text style={{ color: '#fff' }}>My account</Text>
                     </TouchableOpacity>
